@@ -7,10 +7,10 @@ public class Consulta {
     private final Paciente paciente;
     private LocalDate data_hora;
 
-    private Administrativo adm;
     private Profissional profissional;
-    private String anotacoes;
+    private boolean atendimentoRealizado;
 
+    private String anotacoes;
     private AClinica anamnese_clinica;
     private Prescricao prescricao;
     private ANutricional anamnese_nutricional;
@@ -20,8 +20,8 @@ public class Consulta {
             String id,
             Paciente paciente,
             LocalDate data_hora,
-            Administrativo adm,
             Profissional profissional,
+            boolean atendimentoRealizado,
             String anotacoes,
             AClinica anamnese_clinica,
             Prescricao prescricao,
@@ -31,8 +31,8 @@ public class Consulta {
         this.id = id;
         this.paciente = paciente;
         this.data_hora = data_hora;
-        this.adm = adm;
         this.profissional = profissional;
+        this.atendimentoRealizado = atendimentoRealizado;
         this.anotacoes = anotacoes;
         this.anamnese_clinica = anamnese_clinica;
         this.prescricao = prescricao;
@@ -44,8 +44,8 @@ public class Consulta {
     public String getId() { return id; }
     public Paciente getPaciente() { return paciente; }
     public LocalDate getData_hora() { return data_hora; }
-    public Administrativo getAdm() { return adm; }
     public Profissional getProfissional() { return profissional; }
+    public boolean isAtendimentoRealizado() { return atendimentoRealizado; }
     public String getAnotacoes() { return anotacoes; }
     public AClinica getAnamnese_clinica() { return anamnese_clinica; }
     public Prescricao getPrescricao() { return prescricao; }
@@ -53,8 +53,8 @@ public class Consulta {
     public PlanoAlimentar getPlano_alimentar() { return plano_alimentar; }
 
     public void setData_hora(LocalDate data_hora) { this.data_hora = data_hora; }
-    public void setAdm(Administrativo adm) { this.adm = adm; }
     public void setProfissional(Profissional profissional) { this.profissional = profissional; }
+    public void setAtendimentoRealizado(boolean atendimentoRealizado) { this.atendimentoRealizado = atendimentoRealizado; }
     public void setAnotacoes(String anotacoes) { this.anotacoes = anotacoes; }
     public void setAnamnese_clinica(AClinica anamnese_clinica) { this.anamnese_clinica = anamnese_clinica; }
     public void setPrescricao(Prescricao prescricao) { this.prescricao = prescricao; }

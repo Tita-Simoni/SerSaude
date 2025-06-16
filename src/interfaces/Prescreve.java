@@ -1,6 +1,10 @@
 package interfaces;
 
+import model.Consulta;
+
+import java.util.Scanner;
+
 public interface Prescreve {
-    void gerarPrescricao();
-    void realizarAnamneseClinica();
+    void gerarPrescricao(Consulta consulta, Scanner sc);
+    void realizarAnamneseClinica(Consulta consulta, Scanner sc);
 }
