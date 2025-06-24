@@ -27,7 +27,7 @@ public class Main {
         profissionais.add(new Profissional(
                 "PROF1",
                 LocalDate.parse("2025-06-06"),
-                "José Carlos", "000.000.000-00", "jose-carlos@med.com", "51912345678", true,
+                "Jose Carlos", "000.000.000-00", "jose-carlos@med.com", "51912345678", true,
                 "CRM 11110", "Médico", true, false, List.of(""), false));
         profissionais.add(new Profissional(
                 "PROF2",
@@ -42,8 +42,21 @@ public class Main {
         profissionais.add(new Profissional(
                 "PROF4",
                 LocalDate.parse("2025-06-06"),
-                "Diego André", "000.000.000-00", "diego-andre@med.com", "51996325874", true,
+                "Diego Andre", "000.000.000-00", "diego-andre@med.com", "51996325874", true,
                 "CRN 10111", "Nutricionista", false, true, List.of("Cirurgia bariátrica", "Obesidade"), false));
+
+        // Criando 2 pacientes
+        pacientes.add(new Paciente("PACI-01",
+                LocalDate.parse("2025-06-06"),
+                "Isabel Castro", "000.000.000-00", "isabel-castro@gmail.com", "51998745987", true,
+                LocalDate.parse("2020-06-06"),
+                "", "Porto Alegre", "Unimed"));
+        pacientes.add(new Paciente("PACI-02",
+                LocalDate.parse("2025-06-10"),
+                "Enzo Castro", "000.000.000-00", "", "", true,
+                LocalDate.parse("2022-01-16"),
+                "Isabel Castro", "Porto Alegre", "Unimed"));
+
 
         // MENU:
         int opcao;
@@ -67,7 +80,8 @@ public class Main {
                     System.out.println("=======================================================");
                     System.out.println(" 1 - Cadastrar Paciente");
                     System.out.println(" 2 - Agendar Consulta");
-                    System.out.println(" 3 - Voltar pro Menu Inicial");
+                    System.out.println(" 3 - Visualizar histórico de paciente");
+                    System.out.println(" 4 - Voltar pro Menu Inicial");
                     System.out.println(" Escolha uma opção: ");
                     opcao_adm = sc.nextInt();
                     sc.nextLine();
@@ -80,6 +94,8 @@ public class Main {
                             SistemaADM.agendarConsulta(consultas, pacientes, profissionais, sc);
                             break;
                         case 3:
+                            SistemaADM.visualizarHistorico(pacientes, consultas, sc);
+                        case 4:
                             System.out.println("Voltando ao Menu Inicial...");
                             break;
                         default:
@@ -92,7 +108,9 @@ public class Main {
                     System.out.println("=======================================================");
                     System.out.println(" 1 - Verificar consultas em aberto");
                     System.out.println(" 2 - Realizar atendimento");
-                    System.out.println(" 3 - Voltar pro Menu Inicial");
+                    System.out.println(" 3 - Visualizar histórico de paciente");
+                    System.out.println(" 4 - Visualizar consulta");
+                    System.out.println(" 5 - Voltar pro Menu Inicial");
                     System.out.println(" Escolha uma opção: ");
                     opcao_prof = sc.nextInt();
                     sc.nextLine();
@@ -105,6 +123,10 @@ public class Main {
                             SistemaPROF.realizarAtendimento(consultas, sc);
                             break;
                         case 3:
+                            SistemaADM.visualizarHistorico(pacientes, consultas, sc);
+                        case 4:
+                            SistemaPROF.visualizarConsulta(consultas, sc);
+                        case 5:
                             System.out.println("Voltando ao Menu Inicial...");
                             break;
                         default:

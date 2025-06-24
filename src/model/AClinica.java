@@ -39,4 +39,13 @@ public class AClinica {
     public void setAlergias(List<String> alergias) { this.alergias = alergias; }
     public void setObservacoes(String observacoes) { this.observacoes = observacoes; }
 
+    public String toString(){
+        return "===== Anamnese Clínica =====" +
+                "\n | Motivo da consulta: " + motivo_consulta +
+                "\n | Histórico do paciente: " + historico +
+                "\n | Medicamentos em uso: " + uso_medicamentos +
+                "\n | Alergias relatadas: " + alergias +
+                "\n | Observações: " + observacoes;
+    }
+
 }

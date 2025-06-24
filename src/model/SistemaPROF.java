@@ -1,5 +1,6 @@
 package model;
 
+import javax.swing.*;
 import java.util.*;
 
 public class SistemaPROF {
@@ -99,6 +100,39 @@ public class SistemaPROF {
         }
 
         consultaSelecionada.setAtendimentoRealizado(true);
-        System.out.println("Atendimento finalizado com sucesso.\n");
+        System.out.println("=======================================");
+        System.out.println("Atendimento finalizado com sucesso!");
+        System.out.println("=======================================");
+        System.out.println();
     }
+
+    public static void visualizarConsulta(List<Consulta> consultas, Scanner sc) {
+        System.out.println("===== Visualizar Consulta =====");
+        System.out.println("Digite o ID da consulta: ");
+        String id = sc.nextLine();
+
+        boolean encontrada = false;
+        for (Consulta c : consultas) {
+            if(c.getId().equalsIgnoreCase(id)) {
+                c.exibirConsulta();
+                encontrada = true;
+                break;
+            }
+        }
+
+        if (!encontrada) {
+            System.out.println("Consulta não encontrada");
+            System.out.println("Consultas disponíveis:");
+            for (Consulta consulta : consultas) {
+                System.out.println("ID: " + consulta.getId() +
+                "| Paciente: " + consulta.getPaciente().getNome() +
+                "| Data: " + consulta.getData_hora() +
+                "| Profissional: " + consulta.getProfissional().getNome());
+            }
+            System.out.println("Voltando ao menu...\n");
+        }
+
+    }
+
+
 }

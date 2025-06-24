@@ -59,7 +59,53 @@ public class Consulta {
     public void setAnamnese_clinica(AClinica anamnese_clinica) { this.anamnese_clinica = anamnese_clinica; }
     public void setPrescricao(Prescricao prescricao) { this.prescricao = prescricao; }
     public void setAnamnese_nutricional(ANutricional anamnese_nutricional) { this.anamnese_nutricional = anamnese_nutricional; }
-    public void setPlano_alimentar(PlanoAlimentar plano_alimentar) { this.plano_alimentar = plano_alimentar;
+    public void setPlano_alimentar(PlanoAlimentar plano_alimentar) { this.plano_alimentar = plano_alimentar; }
 
+    public String toString() {
+        return "Consulta ID: " + id +
+                "\nPaciente: " + paciente.getNome() +
+                "\nData: " + data_hora +
+                "\nProfissional: " + profissional.getNome() +
+                "\nClasse profissional: " + profissional.getTipo_profissao() +
+                "\nAnamnese clínica: " + (anamnese_clinica != null ? "Sim" : "Não") +
+                "\nPrescrição: " + (prescricao != null ? "Sim" : "Não") +
+                "\nAnamnese nutricional: " + (anamnese_nutricional != null ? "Sim" : "Não") +
+                "\nPlano alimentar: " + (plano_alimentar != null ? "Sim" : "Não");
     }
+
+    public void exibirConsulta() {
+        System.out.println("===== Registro de Consulta =====");
+        System.out.println("ID: " + id);
+        System.out.println("Paciente: " + paciente.getNome());
+        System.out.println("Data: " + data_hora);
+        System.out.println("Profissional: " + profissional.getNome());
+        System.out.println("Tipo profissional: " + profissional.getTipo_profissao());
+        System.out.println("----------------------------------");
+
+        if (anamnese_clinica != null) {
+            System.out.println(anamnese_clinica);
+            System.out.println();
+        }
+
+        if (prescricao != null) {
+            System.out.println(prescricao);
+            System.out.println();
+        }
+
+        if (anamnese_nutricional != null) {
+            System.out.println(anamnese_nutricional);
+            System.out.println();
+        }
+
+        if (plano_alimentar != null) {
+            System.out.println(plano_alimentar);
+            System.out.println();
+        }
+
+        if (anotacoes != null) {
+            System.out.println("Anotações: " + anotacoes);
+        }
+    }
+
+
 }

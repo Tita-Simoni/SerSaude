@@ -18,4 +18,11 @@ public class Prescricao {
 
     public void setPrescricao(String prescricao) { this.prescricao = prescricao; }
     public void setOrientacoes(String orientacoes) { this.orientacoes = orientacoes; }
+
+    public String toString(){
+        return "===== Prescrição =====" +
+                "\n | Prescição: " + prescricao +
+                "\n | Orientações:" + orientacoes;
+    }
+
 }

@@ -49,6 +49,16 @@ public class ANutricional {
     public void setComorbidades(List<String> comorbidades) { this.comorbidades = comorbidades; }
     public void setObservacoes(String observacoes) { this.observacoes = observacoes; }
 
+    public String toString(){
+        return "===== Anamnese Nutricional =====" +
+                "\n | Peso: " + peso +
+                "\n | Altura: " + altura +
+                "\n | IMC: " + imc +
+                "\n | " + imc_desc +
+                "\n | Restrições alimentares relatadas: " + restricoes +
+                "\n | Comorbidades relatadas: " + comorbidades +
+                "\n | Observações: " + observacoes;
+    }
 
 
 }

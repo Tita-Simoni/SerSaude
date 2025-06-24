@@ -19,5 +19,10 @@ public class PlanoAlimentar {
     public void setDescricao(String descricao) { this.descricao = descricao; }
     public void setOrientacoes(String orientacoes) { this.orientacoes = orientacoes; }
 
+    public String toString(){
+        return "===== Plano Alimentar =====" +
+                "\n | Descrição do Plano: " + descricao +
+                "\n | Orientações: "+ orientacoes;
+    }
 
 }

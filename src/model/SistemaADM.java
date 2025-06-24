@@ -54,7 +54,11 @@ public class SistemaADM {
         );
 
         pacientes.add(novoPaciente);
-        System.out.println("Paciente cadastrado com sucesso!\n");
+        System.out.println("=======================================");
+        System.out.println("Paciente cadastrado com sucesso!");
+        System.out.println("=======================================");
+        System.out.println();
+
     }
 
     public static void agendarConsulta(
@@ -88,7 +92,32 @@ public class SistemaADM {
                 } else {
                     System.out.println("Lista de pacientes cadastrados:");
                     for (Paciente p : pacientes) {
-                        System.out.println("- " + p.getNome());
+                        System.out.println(p.getId() + "- " + p.getNome() + " | " + p.getDt_nascimento());
+
+                    }
+                    boolean subMenuAberto = true;
+                    while (subMenuAberto) {
+                        System.out.println("\nO que deseja fazer?");
+                        System.out.println("1 - Cadastrar novo paciente");
+                        System.out.println("2 - Tentar novamente agendar consulta");
+                        System.out.println("3 - Voltar ao menu principal");
+                        System.out.print("Escolha uma opção: ");
+                        opc = sc.nextLine();
+
+                        switch (opc) {
+                            case "1":
+                                cadastrarPaciente(pacientes, sc);
+                                subMenuAberto = false; // volta para o while principal e tenta novamente buscar paciente
+                                break;
+                            case "2":
+                                subMenuAberto = false; // volta pro while principal (tentar buscar paciente de novo)
+                                break;
+                            case "3":
+                                System.out.println("Voltando ao menu principal...");
+                                return; // sai do método agendarConsulta
+                            default:
+                                System.out.println("Opção inválida. Tente novamente.");
+                        }
                     }
                 }
             }
@@ -129,8 +158,50 @@ public class SistemaADM {
         Consulta nova = new Consulta(id_consulta, pacienteSelecionado, dataConsulta, profissionalSelecionado,
                 false, null, null, null, null, null);
         consultas.add(nova);
-        System.out.println("Consulta agendada com sucesso!\n");
+        System.out.println("=======================================");
+        System.out.println("Consulta agendada com sucesso!");
+        System.out.println("=======================================");
+        System.out.println();
+    }
 
+    // Visualizar histórico de paciente
+    public static void visualizarHistorico(List<Paciente> pacientes, List<Consulta> consultas, Scanner sc) {
+        System.out.println("===== Histórico de Consultas do Paciente =====");
+
+        // Busca paciente
+        Paciente pacienteSelecionado = null;
+        while (pacienteSelecionado == null) {
+            System.out.println("Digite o nome completo do paciente:");
+            String nomePaciente = sc.nextLine();
+
+            for (Paciente p : pacientes) {
+                if (p.getNome().equalsIgnoreCase(nomePaciente)) {
+                    pacienteSelecionado = p;
+                    break;
+                }
+            }
+
+            if (pacienteSelecionado == null) {
+                System.out.println("Paciente não encontrado.");
+                System.out.println("Lista de pacientes cadastrados:");
+                for (Paciente p : pacientes) {
+                    System.out.println("- " + p.getNome());
+                }
+            }
+        }
+
+        // Filtra as consultas realizadas para esse paciente
+        boolean encontrou = false;
+        for (Consulta c : consultas) {
+            if (c.getPaciente().equals(pacienteSelecionado) && c.isAtendimentoRealizado()) {
+                System.out.println(c);
+                encontrou = true;
+            }
+        }
+
+        if (!encontrou) {
+            System.out.println("Nenhuma consulta realizada para este paciente.");
+        }
     }
 
 }
